@@ -1,0 +1,220 @@
+[tool.poetry]
+name = "dsa"
+version = "0.0.0"
+description = "A project with the implementation of tasks related to data structures and algorithms"
+authors = ["neyakki <neyakki@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.7.0"
+pytest = "^8.3.3"
+mypy = "^1.12.1"
+bandit = "^1.7.10"
+pytest-mock = "^3.14.0"
+pytest-cov = "^5.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+python_version = "3.12"
+exclude = [
+    ".coverage_html",
+    ".git",
+    ".ipynb_checkpoints",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "__pycache__",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".pytest_cache",
+    ".venv",
+    "venv",
+    ".vscode",
+]
+# Папки и модули, которые необходимо проверять
+files = ["dsa", "tests"]
+# Включить строгую типизацию
+strict = true
+# Включить проверку несовместимых возвращаемых типов
+disallow_incomplete_defs = true
+# Запретить функции без аннотаций типов
+disallow_untyped_defs = true
+# Запретить вызов функций без аннотаций типов
+disallow_untyped_calls = true
+# Запретить смешивание типов при использовании контейнеров
+disallow_any_generics = true
+# Запретить использование переменных без типа при явном Any
+no_implicit_optional = true
+# Запретить неявные приведения типов, когда ожидается другой тип
+warn_redundant_casts = true
+warn_unused_ignores = true
+# Включить проверку неиспользованных import
+warn_unused_configs = true
+# Проверка совместимости типов при присвоении переменных
+check_untyped_defs = true
+# Запретить импорт из библиотек без type hints
+disallow_any_unimported = true
+# Показать коды ошибок
+show_error_codes = true
+# Показывать все предупреждения по типам
+warn_return_any = true
+
+# Настройки для тестов
+[[tool.mypy.overrides]]
+module = "tests.*"
+ignore_missing_imports = true
+disallow_untyped_defs = false
+
+# Настройки для внешних пакетов
+[[tool.mypy.overrides]]
+module = ""
+ignore_missing_imports = true
+
+
+[tool.ruff]
+exclude = [
+    ".coverage_html",
+    ".git",
+    ".ipynb_checkpoints",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "__pycache__",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".pytest_cache",
+    ".venv",
+    "venv",
+    ".vscode",
+]
+line-length = 100
+indent-width = 4
+target-version = "py312"
+namespace-packages = ["dsa"]
+
+[tool.ruff.lint]
+select = [
+    "F",
+    "W",
+    "E",
+    "C90",
+    "I",
+    "N",
+    "D",
+    "A",
+    "B",
+    "UP",
+    "SLOT",
+    "ARG",
+    "PL",
+    "RUF",
+    # "SIM",
+    # "DTZ",
+    # "EM",
+    # "G",
+    # "C4",
+    # "PIE",
+    # "PT",
+    # "T20",
+    # "PTH",
+]
+ignore = [
+    # Рекомендация ruff для фомратера
+    # https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+    "W191",   # табуляция в отсупе
+    "E111",   # Большой отступ
+    "E114",   # Большой отступ (комментаррий)
+    "E117",   # Чрезмерный отступ (комментарий)
+    "D203",   # Перед строкой документации класса требуется 1 пустая строка.
+    "D212",   # Многострочное резюме документации должно начинаться с первой строки.
+    "D206",   # Строка документации должна иметь отступы с пробелами, а не с табуляцией.
+    "D205",   # Между строкой сводки и описанием требуется 1 пустая строка..
+    "D300",   # Использование """
+    "D415",   # Точка в конце
+    "Q",      # Кавычки
+    "COM",    # Запятые
+    "ISC",    # Строковое объединение
+    "RUF001", # Кириллица
+    "RUF002", # Кириллица
+    "RUF003", # Кириллица
+]
+fixable = [
+    "F",
+    "W",
+    "E",
+    "I",
+    "D",
+    "B",
+    "UP",
+    "PL",
+    "RUF",
+    # "SIM",
+    # "C4",
+    # "PIE",
+    # "PT",
+    # "T20",
+    # "PTH",
+]
+unfixable = ["ALL"]
+ignore-init-module-imports = true
+preview = true
+
+[tool.ruff.lint.isort]
+known-local-folder = ["dsa"]
+# required-imports = ["from __future__ import annotations"]
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 72
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"**/{tests,docs,tools}/*" = ["PLR6301", "PLR2004", "D"]
+"**/__init__.py" = ["D"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+docstring-code-format = true
+docstring-code-line-length = 80
+
+# https://bandit.readthedocs.io/en/latest/
+[tool.bandit]
+exclude_dirs = [
+    ".coverage_html",
+    ".eggs",
+    ".git",
+    ".ipynb_checkpoints",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "__pycache__",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".pytest_cache",
+    ".venv",
+    "venv",
+    ".vscode",
+    "tests",
+]
+
+# https://docs.pytest.org/en/stable/reference/reference.html#configuration-options
+[tool.pytest.ini_options]
+pythonpath = ". dsa"
+testpaths = ["tests"]
+console_output_style = "count"
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_"
+addopts = "--cov=dsa --cov-branch"
