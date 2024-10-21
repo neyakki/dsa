@@ -21,6 +21,6 @@ from dsa.ds.array.remove_duplicates import remove_duplicates
         ([], []),
     ],
 )
-def test_find_max_min(arr, exp):
+def test_remove_duplicates(arr, exp):
     retval = remove_duplicates(arr)
     assert retval == exp, "The array contains duplicates"
