@@ -1,6 +1,6 @@
 from pytest import mark
 
-from dsa.ds.array.find_max_min import find_max_min
+from dsa.array.find_max_min import find_max_min
 
 
 @mark.parametrize(

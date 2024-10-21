@@ -1,6 +1,6 @@
 from pytest import mark
 
-from dsa.ds.array.rotate_right import rotate_right
+from dsa.array.rotate_right import rotate_right
 
 
 @mark.parametrize(

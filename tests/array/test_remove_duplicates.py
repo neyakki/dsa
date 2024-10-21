@@ -1,6 +1,6 @@
 from pytest import mark
 
-from dsa.ds.array.remove_duplicates import remove_duplicates
+from dsa.array.remove_duplicates import remove_duplicates
 
 
 @mark.parametrize(

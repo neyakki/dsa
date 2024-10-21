@@ -1,6 +1,6 @@
 from pytest import mark
 
-from dsa.ds.array.reverse_array import reverse_array
+from dsa.array.reverse_array import reverse_array
 
 
 @mark.parametrize(
